@@ -34,7 +34,7 @@ class Company {
 	listOfDelProgrammer = [];
 	listOfDepartments = {};
 	listAllProgrammerInDep = [];
-	listAllProgrammer=[]
+	listAllProgrammer = []
 
 	projectStatus = {
 		dontWork: 'dontWork',
@@ -76,9 +76,9 @@ class Company {
 			})
 		});
 	}
-	getAllProgrammer(){
+	getAllProgrammer() {
 		this.getAllProgrammerInDeprtments()
-		this.listAllProgrammerInDep.forEach(e=>this.listAllProgrammer.push(e))
+		this.listAllProgrammerInDep.forEach(e => this.listAllProgrammer.push(e))
 		this.listOfDelProgrammer.forEach(e => this.listAllProgrammer.push(e))
 	}
 
@@ -125,11 +125,11 @@ class Boss extends Company {
 	}
 
 	addProject() {
-		let numberOfProject = this.getRandomInt(0, 5);
+		let numberOfProject = 2;
 		if (numberOfProject != 0) {
 			for (let i = 0; i < numberOfProject; i++) {
 				let project = {}
-				project.items = this.itemsProject[Math.floor(Math.random() * this.itemsProject.length)];
+				project.items = this.itemsProject[1];
 				project.level = this.getRandomInt(1, 4);
 				project.status = this.projectStatus.dontWork;
 				this.projectList.push(new Project(project));
@@ -244,10 +244,10 @@ class Boss extends Company {
 		}
 		this.getAllProgrammerInDeprtments()
 		let allProgrammer = this.listAllProgrammerInDep
-		if (allProgrammer.length > 0){
-			allProgrammer.forEach(e=>{
-				if(e.statusWork==this.statusWorkForProgrammer.free){
-					e.daysDontWork+=1
+		if (allProgrammer.length > 0) {
+			allProgrammer.forEach(e => {
+				if (e.statusWork == this.statusWorkForProgrammer.free) {
+					e.daysDontWork += 1
 				}
 			})
 		}
@@ -318,7 +318,7 @@ class Boss extends Company {
 }
 
 let boss = new Boss();
-work(105)
+work(10)
 function work(day) {
 	for (let i = day; i > 0; i--) {
 		boss.changeNumberOfDaysProjects()
@@ -336,6 +336,6 @@ function work(day) {
 	console.log(`Количество устроенных программистов: ${boss.listAllProgrammerInDep.length}`)
 	console.log(`Количество уволенных программистов: ${boss.listOfDelProgrammer.length}`)
 	console.log(`Количество реализованных проектов: ${boss.listOfCompletedProjects.length}`)
-/* 	console.log(boss.listAllProgrammer)
-	console.log(boss.listOfCompletedProjects) */
+	/* 	console.log(boss.listAllProgrammer)
+		console.log(boss.listOfCompletedProjects) */
 }
