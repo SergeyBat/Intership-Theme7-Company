@@ -34,7 +34,7 @@ class Company {
 	listOfDelProgrammer = [];
 	listOfDepartments = {};
 	listAllProgrammerInDep = [];
-	listAllProgrammer=[]
+	listAllProgrammer = []
 
 	projectStatus = {
 		dontWork: 'dontWork',
@@ -76,9 +76,9 @@ class Company {
 			})
 		});
 	}
-	getAllProgrammer(){
+	getAllProgrammer() {
 		this.getAllProgrammerInDeprtments()
-		this.listAllProgrammerInDep.forEach(e=>this.listAllProgrammer.push(e))
+		this.listAllProgrammerInDep.forEach(e => this.listAllProgrammer.push(e))
 		this.listOfDelProgrammer.forEach(e => this.listAllProgrammer.push(e))
 	}
 
@@ -213,11 +213,11 @@ class Boss extends Company {
 			let readyProjects = this.projectListForTest.filter(e => e.status == this.projectStatus.ready);
 			let listTesters = this.listOfDepartments.qaDep.getFreeProgrammer();
 			if (readyProjects.length > 0) {
-				readyProjects.forEach((e, index) => {
+				readyProjects.forEach((e) => {
 					if (listTesters.length > 0) {
 						e.status = this.projectStatus.test;
 
-						e.workingProgrammers.push(listTesters[index])
+						e.workingProgrammers.push(listTesters[0])
 						this.listOfDepartments.qaDep.projectList.push(e)
 						listTesters[0].statusWork = this.statusWorkForProgrammer.busy;
 						listTesters[0].numberOfProject += 1;
@@ -244,10 +244,10 @@ class Boss extends Company {
 		}
 		this.getAllProgrammerInDeprtments()
 		let allProgrammer = this.listAllProgrammerInDep
-		if (allProgrammer.length > 0){
-			allProgrammer.forEach(e=>{
-				if(e.statusWork==this.statusWorkForProgrammer.free){
-					e.daysDontWork+=1
+		if (allProgrammer.length > 0) {
+			allProgrammer.forEach(e => {
+				if (e.statusWork == this.statusWorkForProgrammer.free) {
+					e.daysDontWork += 1
 				}
 			})
 		}
@@ -260,7 +260,7 @@ class Boss extends Company {
 			listProjectsWeb.forEach((e) => {
 				if (e.level == e.daysInOperation) {
 					e.status = this.projectStatus.ready;
-					e.workingProgrammers.statusWork = this.statusWorkForProgrammer.free;
+					e.workingProgrammers[0].statusWork = this.statusWorkForProgrammer.free;
 					e.workingProgrammers = []
 					this.projectListForTest.push(e);
 				}
@@ -292,7 +292,7 @@ class Boss extends Company {
 		this.listOfDepartments.qaDep.projectList.filter(e => {
 			if (e.status == this.projectStatus.test && e.daysInTest == 1) {
 				e.status = this.projectStatus.completed;
-				e.workingProgrammers.statusWork = this.statusWorkForProgrammer.free;
+				e.workingProgrammers[0].statusWork = this.statusWorkForProgrammer.free;
 				e.workingProgrammers = []
 				this.listOfCompletedProjects.push(e);
 			}
@@ -318,7 +318,7 @@ class Boss extends Company {
 }
 
 let boss = new Boss();
-work(105)
+work(365)
 function work(day) {
 	for (let i = day; i > 0; i--) {
 		boss.changeNumberOfDaysProjects()
@@ -336,6 +336,6 @@ function work(day) {
 	console.log(`Количество устроенных программистов: ${boss.listAllProgrammerInDep.length}`)
 	console.log(`Количество уволенных программистов: ${boss.listOfDelProgrammer.length}`)
 	console.log(`Количество реализованных проектов: ${boss.listOfCompletedProjects.length}`)
-/* 	console.log(boss.listAllProgrammer)
-	console.log(boss.listOfCompletedProjects) */
+	/* 	console.log(boss.listAllProgrammer)
+		console.log(boss.listOfCompletedProjects) */
 }
