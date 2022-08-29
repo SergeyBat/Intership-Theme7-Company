@@ -104,10 +104,15 @@ class Department extends Company {
 
 class Boss extends Company {
 	constructor() {
+		if (Boss.exists) {
+			return Boss.instance;
+		}
 		super();
 		this.listOfDepartments.webDep = (new Department('Web'));
 		this.listOfDepartments.mobileDep = (new Department('Mobile'));
 		this.listOfDepartments.qaDep = (new Department('QA'));
+		Boss.instance = this;
+		Boss.exists = true;
 	}
 
 	addProgrammer() {
@@ -318,6 +323,8 @@ class Boss extends Company {
 }
 
 let boss = new Boss();
+/*let boss2 = new Boss();
+console.log(boss===boss2) */
 work(365)
 function work(day) {
 	for (let i = day; i > 0; i--) {
