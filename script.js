@@ -5,7 +5,7 @@ class Project {
 		this.status = options.status;
 	}
 	daysInOperation = 0;
-	daysInTest = 0
+	daysInTest = 0;
 	numberOfDevelopersEmployed = 0;
 	workingProgrammers = []
 

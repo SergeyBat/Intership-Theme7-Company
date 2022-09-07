@@ -1,0 +1,27 @@
+{
+  "name": "theme7-company",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ext .js --ignore-path .gitignore ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SergeyBat/Theme7-Company.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SergeyBat/Theme7-Company/issues"
+  },
+  "homepage": "https://github.com/SergeyBat/Theme7-Company#readme",
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.18.9",
+    "@babel/eslint-plugin": "^7.18.10",
+    "eslint": "8.23.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  }
+}
