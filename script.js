@@ -146,14 +146,14 @@ class Boss extends Company {
 		if (this.projectList.length > 0) {
 			const change = changeInformation.bind(this);
 			const changeProjectInf = changeInformationProjectAtWork.bind(this)
-			let webProjects = this.projectList.filter(e => e.items == this.itemsProject[0] && e.status == this.projectStatus.dontWork);
-			let webProgrammer = this.listOfDepartments.webDep.getFreeProgrammer().filter(e => e.position == this.positionProgrammer.Web);
+			let webProjects = this.projectList.filter(e => e.items == this.itemsProject[0] && e.status === this.projectStatus.dontWork);
+			let webProgrammer = this.listOfDepartments.webDep.getFreeProgrammer().filter(e => e.position === this.positionProgrammer.Web);
 
-			let mobileProjects = this.projectList.filter(e => e.items == this.itemsProject[1] && e.status == this.projectStatus.dontWork);
-			let mobileProgrammer = this.listOfDepartments.mobileDep.getFreeProgrammer().filter(e => e.position == this.positionProgrammer.Mobile);
+			let mobileProjects = this.projectList.filter(e => e.items === this.itemsProject[1] && e.status === this.projectStatus.dontWork);
+			let mobileProgrammer = this.listOfDepartments.mobileDep.getFreeProgrammer().filter(e => e.position === this.positionProgrammer.Mobile);
 			if (webProjects.length > 0) {
 				change(webProjects, this.listOfDepartments.webDep, webProgrammer);
-				this.projectList = this.projectList.filter(e => e.status != this.projectStatus.atWork);
+				this.projectList = this.projectList.filter(e => e.status !== this.projectStatus.atWork);
 			}
 			if (mobileProjects.length > 0) {
 				change(mobileProjects, this.listOfDepartments.mobileDep, mobileProgrammer);
